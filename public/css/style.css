@@ -7,3 +7,29 @@ body {
   max-width: 65ch;
   margin-inline: auto;
 }
+
+main {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+nav {
+  background-color: rgb(98, 187, 255);
+  height: 3rem;
+  padding: 0.5rem;
+  display: flex;
+  a {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    align-content: center;
+  }
+}
+
+footer {
+  margin-top: 5rem;
+  background-color: rgb(98, 187, 255);
+  padding: 0.1rem 0;
+  p {
+    margin-left: 1rem;
+  }
+}

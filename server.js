@@ -6,6 +6,7 @@ import bodyParser from 'body-parser'
 import indexRouter from './routes/index.js'
 import searchRouter from './routes/search.js'
 import quizRouter from './routes/quiz.js'
+import aboutRouter from './routes/om.js'
 
 const app = express()
 
@@ -17,6 +18,7 @@ app.use(express.static('public'))
 app.use(morgan("dev"))
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
+app.use('/om', aboutRouter)
 app.use('/search', searchRouter)
 app.use('/', indexRouter)
 app.use('/quiz', quizRouter)

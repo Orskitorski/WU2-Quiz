@@ -20,6 +20,12 @@ const questions = [
         text: "Hur många hjärnceller har Olle?",
         answers: [52, 65000000001, 83, 45],
         correctAnswer: 65000000001
+    },
+    {
+        id: "q3",
+        text: "Hur mycket nörd är Sammi",
+        answers: ["Väldigt", "Inte alls", "Kanske?", "Ja."],
+        correctAnswer: "Väldigt"
     }
 ]
 
@@ -33,35 +39,21 @@ router.get("/questions", (req, res) => {
 router.post("/end", (req, res) => {
     const answers = req.body
     console.log(answers)
-    /*
-    const answerStatuses = [
-        {
-            id: "q1",
-            status: true
+    const results = questions.map(question => {
+        const answer = answers[question.id]
+        return {
+            question: question.text,
+            answer,
+            correct: answer == question.correctAnswer
         }
-        {
-            id: "q2",
-            status: true
-        }
-    ]
-    */
-    questions.forEach(question => {
-        const answer = answers[question.id] 
-        if(answer == question.correctAnswer) {
-            console.log("Du har svarat rätt på fråga : ", question.id)
-        }
-        else {
-            console.log("Du är dum i huvudet på fråga : ", question.id)
-            //answerStatuses.forEach(answerStatus => {
-            //})
-        }
-        res.json(answers)
     })
-    /*
-    res.render("quiz.njk", {
-        message: "hej"
-    })
-    */
+
+    console.log(results)
+
+   res.render("result.njk", {
+    message: "Ditt resultat",
+    results,
+   })
 })
 
 
